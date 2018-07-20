@@ -17,6 +17,13 @@ export class MenuService {
       .get(`authorization/privileges?userId=${userName}`)
       .pipe(map(data => data));
   }
+
+  filterMenu = (priv, menu) => this.filterChildren(priv, this.filterParents(priv, menu));
+
+  mergePermitsMenu(privileges: Privileges[], menu: Menu[]): Menu[] {
+    return this.filterMenu(privileges, menu);
+  }
+
   findPrivilege(privileges: Privileges[], menuPrivilege: string): boolean {
     if (!privileges) {
       return false;
@@ -24,21 +31,22 @@ export class MenuService {
     return privileges.find(privilege => privilege.Name === menuPrivilege) ? true : false;
   }
 
-  mergePermitsMenu(privileges: Privileges[], menu: Menu[]): Menu[] {
-    return menu
-      .filter(item => {
-        return (
-          this.findPrivilege(privileges, item.RequiredPrivilege) ||
-          (item.Children
-            ? item.Children.find(child => this.findPrivilege(privileges, child.RequiredPrivilege))
-            : false)
-        );
-      })
-      .map(item => {
-        item.Children = item.Children
-          ? item.Children.filter(child => this.findPrivilege(privileges, child.RequiredPrivilege))
-          : null;
-        return item;
-      });
+  filterParents(privileges: Privileges[], menu: Menu[]): Menu[] {
+    return menu.filter(item => {
+      return (
+        this.findPrivilege(privileges, item.RequiredPrivilege) ||
+        (item.Children
+          ? item.Children.find(child => this.findPrivilege(privileges, child.RequiredPrivilege))
+          : false)
+      );
+    });
+  }
+  filterChildren(privileges: Privileges[], menu: Menu[]) {
+    return menu.map(item => {
+      item.Children = item.Children
+        ? item.Children.filter(child => this.findPrivilege(privileges, child.RequiredPrivilege))
+        : null;
+      return item;
+    });
   }
 }
