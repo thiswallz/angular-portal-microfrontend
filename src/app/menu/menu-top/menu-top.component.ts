@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Menu } from 'src/app/menu/models/menu.model';
 import { MetaRouter } from 'meta-spa-router';
+import { MenuService } from 'src/app/menu/menu.service';
 
 const DEFAULT_MENU = 'Home';
 const BTN_DRAWER_CLS = 'mdl-layout__drawer-button';
@@ -18,18 +19,22 @@ export class MenuTopComponent implements OnInit {
   selected: string = DEFAULT_MENU;
   subSelected: string;
   subItemSelected: string;
+  userName: string;
 
   readonly version: string = environment.version;
 
-  constructor(private elem: ElementRef) {
-    this.menues = [
-      {
-        Name: 'Home',
-        Icon: 'fa-book',
-        Path: DEFAULT_MENU
-      },
-      ...environment.sites.Children
-    ];
+  constructor(private elem: ElementRef, private menuService: MenuService) {
+    this.menuService.getPermits('Random').subscribe(auth => {
+      this.userName = auth.User.Name;
+      this.menues = [
+        {
+          Name: 'Home',
+          Icon: 'fa-book',
+          Path: DEFAULT_MENU
+        },
+        ...this.menuService.mergePermitsMenu(auth.Privileges, environment.sites.Children)
+      ];
+    });
   }
 
   ngOnInit() {

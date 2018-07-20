@@ -1,6 +1,7 @@
 <div title="close right side" class="close-right" *ngIf="isSplitted" (click)="defautltIframes()">
   <i class="material-icons">cancel_presentation</i>
 </div>
+
 <div class=" mdl-layout mdl-js-layout  mdl-layout--fixed-header">
   <div class="version">{{version}}</div>
   <div class="mdl-layout__header">
@@ -13,7 +14,7 @@
       </span>
       <div class="menu-username">
         Welcome
-        <span id="user-name">Mauricio Joost</span>
+        <span >{{userName}}</span>
       </div>
     </header>
 
@@ -56,13 +57,7 @@
             </ul>
           </li>
         </ng-template>
-
-
-
       </ng-template>
-
-
-
       <div class="mdl-layout-spacer"></div>
       <div>
         <i class="mdl-color-text--blue-grey-400 material-icons material-icons-menu" role="presentation">help_outline</i>
@@ -71,7 +66,6 @@
     </nav>
   </div>
   <main class="mdl-layout__content mdl-color--grey-100">
-
     <div class="mdl-grid" id="outlet">
     </div>
   </main>

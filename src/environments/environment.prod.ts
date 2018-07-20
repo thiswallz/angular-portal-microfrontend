@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   version: 'v1.1 prod',
-  apiAuthUrl: 'http://wn000214.rwest.local:51350/api/',
+  apiAuthUrl: 'http://wn000215.rwest.local:51350/api/',
   sites: {
     Name: 'Home',
     Icon: 'fa-home',

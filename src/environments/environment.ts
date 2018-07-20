@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   version: 'v1.2 testing',
-  apiAuthUrl: 'http://wn000214.rwest.local:51350/api/',
+  apiAuthUrl: 'http://wn000215.rwest.local:51350/api/',
   sites: {
     Name: 'Home',
     Icon: 'fa-home',
@@ -29,7 +29,7 @@ export const environment = {
         Path: 'http://localhost:4201/',
         Order: 1,
         Visible: true,
-        RequiredPrivilege: 'Positions.View',
+        RequiredPrivilege: 'Flipbook.View',
         Children: null
       },
       {
