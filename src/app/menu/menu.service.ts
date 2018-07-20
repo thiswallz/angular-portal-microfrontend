@@ -12,16 +12,17 @@ import { Menu } from 'src/app/menu/models/menu.model';
 export class MenuService {
   constructor(private apiService: ApiService) {}
 
+  mergePermitsMenu(privileges: Privileges[], menu: Menu[]): Menu[] {
+    const filter = this.filterMenu(this.filterParents.bind(this), this.filterChildren.bind(this));
+    return filter(privileges, menu);
+  }
+
+  filterMenu = (p, c) => (priv, menu) => c(priv, p(priv, menu));
+
   getPermits(userName: string): Observable<Authorization[]> {
     return this.apiService
       .get(`authorization/privileges?userId=${userName}`)
       .pipe(map(data => data));
-  }
-
-  filterMenu = (priv, menu) => this.filterChildren(priv, this.filterParents(priv, menu));
-
-  mergePermitsMenu(privileges: Privileges[], menu: Menu[]): Menu[] {
-    return this.filterMenu(privileges, menu);
   }
 
   findPrivilege(privileges: Privileges[], menuPrivilege: string): boolean {
@@ -32,6 +33,9 @@ export class MenuService {
   }
 
   filterParents(privileges: Privileges[], menu: Menu[]): Menu[] {
+    console.log(null, this);
+
+    console.log(null, this.findPrivilege);
     return menu.filter(item => {
       return (
         this.findPrivilege(privileges, item.RequiredPrivilege) ||
@@ -41,6 +45,7 @@ export class MenuService {
       );
     });
   }
+
   filterChildren(privileges: Privileges[], menu: Menu[]) {
     return menu.map(item => {
       item.Children = item.Children
