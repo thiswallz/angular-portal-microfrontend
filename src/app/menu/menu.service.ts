@@ -19,7 +19,7 @@ export class MenuService {
 
   filterMenu = (p, c) => (priv, menu) => c(priv, p(priv, menu));
 
-  getPermits(userName: string): Observable<Authorization[]> {
+  getPermits(userName: string): Observable<Authorization> {
     return this.apiService
       .get(`authorization/privileges?userId=${userName}`)
       .pipe(map(data => data));
