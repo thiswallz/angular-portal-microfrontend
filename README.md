@@ -35,6 +35,55 @@ This Portal is using meta-spa-router for global routes and a dynamic-iframe stra
 }
 ```
 - When you activate auth option the service has to response with privileges, the portal is going to merge the sites that you defined previusly with the privileges from the auth service.
+### environment.ts > to configurate sites:
+
+
+
+```json
+  sites: {
+    Name: 'Home',
+    Path: '',
+    Children: [
+      {
+        Name: 'New Top Gun',
+        Icon: 'fa-list-alt',
+        Path: 'http://wb001502.rwest.local/#/login',
+        Order: 0,
+        Visible: true,
+        RequiredPrivilege: 'Topgun.view',
+        Children: null
+      },
+      {
+        Name: 'Top Gun',
+        Icon: 'fa-desktop',
+        Path: null,
+        Order: 0,
+        Visible: true,
+        RequiredPrivilege: 'Oldtopgun',
+        Children: [
+          {
+            Name: 'Test',
+            Path: 'http://wb001502.rwest.local:8080/topgun',
+            Order: 1,
+            Visible: true,
+            RequiredPrivilege: 'Oldtopgun.test',
+            Children: null
+          },
+          {
+            Name: 'Prod',
+            Path: 'http://wn000280.rwest.local/topgun',
+            Order: 2,
+            Visible: true,
+            RequiredPrivilege: 'Oldtopgun.prod',
+            Children: null
+          }
+        ]
+      }
+    ]
+  }
+
+```
+- Icons are from font awesome >5
 
 ### The portal uses a merge strategy for permits, you can change it in menu.service.ts
 
@@ -83,57 +132,7 @@ This Portal is using meta-spa-router for global routes and a dynamic-iframe stra
 
 ```
 
-### environment config sites:
-
-- Icons are from font awesome >5
-
-
-```json
-  sites: {
-    Name: 'Home',
-    Path: '',
-    Children: [
-      {
-        Name: 'New Top Gun',
-        Icon: 'fa-list-alt',
-        Path: 'http://wb001502.rwest.local/#/login',
-        Order: 0,
-        Visible: true,
-        RequiredPrivilege: 'Topgun.view',
-        Children: null
-      },
-      {
-        Name: 'Top Gun',
-        Icon: 'fa-desktop',
-        Path: null,
-        Order: 0,
-        Visible: true,
-        RequiredPrivilege: 'Oldtopgun',
-        Children: [
-          {
-            Name: 'Test',
-            Path: 'http://wb001502.rwest.local:8080/topgun',
-            Order: 1,
-            Visible: true,
-            RequiredPrivilege: 'Oldtopgun.test',
-            Children: null
-          },
-          {
-            Name: 'Prod',
-            Path: 'http://wn000280.rwest.local/topgun',
-            Order: 2,
-            Visible: true,
-            RequiredPrivilege: 'Oldtopgun.prod',
-            Children: null
-          }
-        ]
-      }
-    ]
-  }
-
-```
-
-## CSSs, LOGOs, HTMLs are easly customizable
+## CSSs, LOGOs, HTMLs are easily customizable
 
 ## Development server
 
