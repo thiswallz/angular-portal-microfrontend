@@ -1,6 +1,6 @@
 export interface Menu {
   Name: string;
-  Icon: string;
+  Icon?: string;
   Path: string;
   Order?: number;
   Visible?: boolean;

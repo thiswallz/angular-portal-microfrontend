@@ -24,17 +24,28 @@ export class MenuTopComponent implements OnInit {
   readonly version: string = environment.version;
 
   constructor(private elem: ElementRef, private menuService: MenuService) {
-    this.menuService.getPermits('Random').subscribe(auth => {
-      this.userName = auth.User.Name;
+    if (environment.auth === true) {
+      this.menuService.getPermits().subscribe(auth => {
+        this.userName = auth.User.Name;
+        this.menues = [
+          {
+            Name: 'Home',
+            Icon: 'fa-book',
+            Path: DEFAULT_MENU
+          },
+          ...this.menuService.mergePermitsMenu(auth.Privileges, environment.sites.Children)
+        ];
+      });
+    } else {
       this.menues = [
         {
           Name: 'Home',
           Icon: 'fa-book',
           Path: DEFAULT_MENU
         },
-        ...this.menuService.mergePermitsMenu(auth.Privileges, environment.sites.Children)
+        ...environment.sites.Children
       ];
-    });
+    }
   }
 
   ngOnInit() {
@@ -54,7 +65,6 @@ export class MenuTopComponent implements OnInit {
     const active = this.selectDomItem(query);
     this.router.go(splittedQuery);
     const splitItem = this.selectDomItem(splittedQuery);
-    console.log('aif: ', active, splitItem);
     this.activeIframe(active, splitItem);
     this.close();
   }
@@ -72,6 +82,7 @@ export class MenuTopComponent implements OnInit {
     if (child) {
       this.subItemSelected = this.generateChildKey(menu, child);
     }
+    this.selected = this.cleanSpaces(this.selected);
     this.resetSubSelect();
     this.close();
   }
@@ -110,7 +121,6 @@ export class MenuTopComponent implements OnInit {
     iframeLeft.style.display = 'block';
     iframeLeft.classList.remove('splitted-left');
     this.isSplitted = false;
-    //iframeLeft.src = iframeLeft.src;
   }
 
   extractName(url) {

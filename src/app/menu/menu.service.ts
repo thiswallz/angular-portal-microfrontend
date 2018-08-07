@@ -19,10 +19,8 @@ export class MenuService {
 
   filterMenu = (p, c) => (priv, menu) => c(priv, p(priv, menu));
 
-  getPermits(userName: string): Observable<Authorization> {
-    return this.apiService
-      .get(`authorization/privileges?userId=${userName}`)
-      .pipe(map(data => data));
+  getPermits(): Observable<Authorization> {
+    return this.apiService.get().pipe(map(data => data));
   }
 
   findPrivilege(privileges: Privileges[], menuPrivilege: string): boolean {
@@ -33,9 +31,6 @@ export class MenuService {
   }
 
   filterParents(privileges: Privileges[], menu: Menu[]): Menu[] {
-    console.log(null, this);
-
-    console.log(null, this.findPrivilege);
     return menu.filter(item => {
       return (
         this.findPrivilege(privileges, item.RequiredPrivilege) ||

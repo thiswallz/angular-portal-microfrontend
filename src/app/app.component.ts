@@ -17,12 +17,7 @@ export class AppComponent implements OnInit {
     const states: MetaRoute[] = [
       {
         path: 'Home',
-        app: 'http://madportal/app/home',
-        outlet: 'outlet'
-      },
-      {
-        path: 'topgun',
-        app: 'http://localhost:4200/',
+        app: environment.sites.Path,
         outlet: 'outlet'
       },
       ...this.generateStates()

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,9 +13,9 @@ export class ApiService {
     return error;
   }
 
-  get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+  get(params: HttpParams = new HttpParams()): Observable<any> {
     return this.http
-      .get(`${environment.apiAuthUrl}${path}`, { params })
+      .get(`${environment.apiAuthUrl}`, { params })
       .pipe(catchError(this.formatErrors));
   }
 }

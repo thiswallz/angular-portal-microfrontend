@@ -10,7 +10,7 @@
     <header class="drawer-header">
       <img src="assets/logo.png" class="menu-icon" width="40px">
       <span class="menu-title">
-        Mad.Portal
+        {{portalName}} 
       </span>
       <div class="menu-username">
         Welcome
@@ -23,7 +23,8 @@
         <div *ngIf="menu.Children;then withChildren else withoutChildren">
         </div>
         <ng-template #withoutChildren>
-          <a (click)="onClickMenu(menu)" class="mdl-navigation__link" id="link-{{menu.Name | trim}}" href="#{{menu.Name | trim}}" [class.mdl-navigation__link-open]="menu.Name===selected">
+          {{menu.Name | trim}}
+          <a (click)="onClickMenu(menu)" class="mdl-navigation__link" id="link-{{menu.Name | trim}}" href="#{{menu.Name | trim}}" [class.mdl-navigation__link-open]="cleanSpaces(menu.Name)===selected">
             <i class="fas {{menu.Icon}} material-icons-menu {{menu.Name===selected ? 'material-icons-menu-open': ''}}"></i>
             <span class="menu-item-title">
               {{menu.Name}}
@@ -32,7 +33,7 @@
         </ng-template>
         <ng-template #withChildren>
           <li class="menu-dropdown-container">
-            <a [class.parent-opened]="menu.Name===subSelected" [class.mdl-navigation__link-open]="menu.Name===selected" class="mdl-navigation__link menu-parent"
+            <a [class.parent-opened]="menu.Name===subSelected" [class.mdl-navigation__link-open]="cleanSpaces(menu.Name)===selected" class="mdl-navigation__link menu-parent"
               (click)="onSelectSubMenu(menu)">
               <i class="fas {{menu.Icon}} material-icons-menu"></i>
               <span class="parent-menu-item-title">
