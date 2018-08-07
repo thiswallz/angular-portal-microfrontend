@@ -23,7 +23,6 @@
         <div *ngIf="menu.Children;then withChildren else withoutChildren">
         </div>
         <ng-template #withoutChildren>
-          {{menu.Name | trim}}
           <a (click)="onClickMenu(menu)" class="mdl-navigation__link" id="link-{{menu.Name | trim}}" href="#{{menu.Name | trim}}" [class.mdl-navigation__link-open]="cleanSpaces(menu.Name)===selected">
             <i class="fas {{menu.Icon}} material-icons-menu {{menu.Name===selected ? 'material-icons-menu-open': ''}}"></i>
             <span class="menu-item-title">
