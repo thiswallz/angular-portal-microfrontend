@@ -4,7 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This Portal is using meta-spa-router for global routes and a dynamic-iframe strategy to load apps inside. You can include apps from different techonologies even if you are using routing there is not a problem this implementation.
 
+### Home 
 ![picture](c1.PNG?raw=true 'Home')
+
+### Is possible to split apps
 
 ![picture](c2.PNG?raw=true 'Split')
 
