@@ -10,42 +10,101 @@ export const environment = {
   portalName: 'New Portal',
   sites: {
     Name: 'Home',
-    Path: '',
+    Path: 'https://s.codepen.io/thiswallz/debug/NBLZYo/wQMPoNNNgDZk',
     Children: [
       {
-        Name: 'New Top Gun',
+        Name: 'Css Game',
         Icon: 'fa-list-alt',
-        Path: 'http://wb001502.rwest.local/#/login',
+        Path: 'https://s.codepen.io/thiswallz/debug/GBXbYG/nqAwvGGGZEor',
         Order: 0,
         Visible: true,
-        RequiredPrivilege: 'Topgun.view',
+        RequiredPrivilege: null,
         Children: null
       },
       {
-        Name: 'Top Gun',
+        Name: 'Code pin examples',
         Icon: 'fa-desktop',
         Path: null,
         Order: 0,
         Visible: true,
-        RequiredPrivilege: 'Oldtopgun',
+        RequiredPrivilege: null,
         Children: [
           {
-            Name: 'Test',
-            Path: 'http://wb001502.rwest.local:8080/topgun',
+            Name: 'House illustration',
+            Path: 'https://s.codepen.io/thiswallz/debug/EpeBrN/gaMeYZZZoXnM',
             Order: 1,
             Visible: true,
-            RequiredPrivilege: 'Oldtopgun.test',
+            RequiredPrivilege: null,
             Children: null
           },
           {
-            Name: 'Prod',
-            Path: 'http://wn000280.rwest.local/topgun',
+            Name: 'Grid css animation',
+            Path: 'https://s.codepen.io/thiswallz/debug/JBaQeN/wQrPoNNNgvGM',
             Order: 2,
             Visible: true,
-            RequiredPrivilege: 'Oldtopgun.prod',
+            RequiredPrivilege: null,
             Children: null
           }
         ]
+      },
+      {
+        Name: 'Atom',
+        Icon: 'fa-award',
+        Path: '',
+        Order: 0
+      },
+      {
+        Name: 'Capsules',
+        Icon: 'fa-capsules',
+        Path: '',
+        Order: 0
+      },
+      {
+        Name: 'Bills',
+        Icon: 'fa-euro-sign',
+        Path: '',
+        Order: 0
+      },
+      {
+        Name: 'External',
+        Icon: 'fa-eye',
+        Path: '',
+        Order: 0
+      },
+      {
+        Name: 'Messages',
+        Icon: 'fa-envelope',
+        Path: '',
+        Order: 0,
+        Children: []
+      },
+      {
+        Name: 'Email',
+        Icon: 'fa-envelope-open',
+        Path: '',
+        Order: 0,
+        Children: []
+      },
+      {
+        Name: 'Filters',
+        Icon: 'fa-filter',
+        Path: '',
+        Order: 0,
+        Children: []
+      },
+      {
+        Name: 'Games',
+        Icon: 'fa-gamepad',
+        Path: '',
+        Order: 0,
+        Children: []
+      },
+      {
+        Name: 'Sports',
+        Icon: 'fa-futbol',
+        Path: '',
+        Order: 0,
+        Children: []
       }
     ]
   }

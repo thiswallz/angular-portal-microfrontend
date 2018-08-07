@@ -23,12 +23,12 @@ This Portal is using meta-spa-router for global routes and a dynamic-iframe stra
   "Privileges": [
     {
       "Id": 24,
-      "Name": "Checklist.STO.View",
+      "Name": "App1",
       "Description": "Dummy description"
     },
     {
       "Id": 15,
-      "Name": "Tariff.Operator.View",
+      "Name": "App2",
       "Description": "Dummy description"
     }
   ]
@@ -40,47 +40,6 @@ This Portal is using meta-spa-router for global routes and a dynamic-iframe stra
 
 
 ```json
-  sites: {
-    Name: 'Home',
-    Path: '',
-    Children: [
-      {
-        Name: 'New Top Gun',
-        Icon: 'fa-list-alt',
-        Path: 'http://wb001502.rwest.local/#/login',
-        Order: 0,
-        Visible: true,
-        RequiredPrivilege: 'Topgun.view',
-        Children: null
-      },
-      {
-        Name: 'Top Gun',
-        Icon: 'fa-desktop',
-        Path: null,
-        Order: 0,
-        Visible: true,
-        RequiredPrivilege: 'Oldtopgun',
-        Children: [
-          {
-            Name: 'Test',
-            Path: 'http://wb001502.rwest.local:8080/topgun',
-            Order: 1,
-            Visible: true,
-            RequiredPrivilege: 'Oldtopgun.test',
-            Children: null
-          },
-          {
-            Name: 'Prod',
-            Path: 'http://wn000280.rwest.local/topgun',
-            Order: 2,
-            Visible: true,
-            RequiredPrivilege: 'Oldtopgun.prod',
-            Children: null
-          }
-        ]
-      }
-    ]
-  }
 
 ```
 - Icons are from font awesome >5

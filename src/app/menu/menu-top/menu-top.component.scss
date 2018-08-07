@@ -11,6 +11,7 @@ $high-light-color: yellow;
 $inverse-warn-color: rgba(8, 29, 214, 0.54);
 $inverse-light-warn-color: rgba(25, 163, 255, 0.54);
 $bg-color-menu-selected: #141517;
+$bg-color-menu: #303642;
 $soft-text-color: rgba(255, 255, 255, 0.56);
 $success-color: rgba(38, 255, 38, 0.774);
 
@@ -130,7 +131,7 @@ ul {
   padding: 0px;
 }
 .sub-menu {
-  background-color: #303642;
+  background-color: $bg-color-menu;
 }
 
 .sub-menu-item {
@@ -381,20 +382,6 @@ ul {
 
 .mdl-layout__drawer {
   border-right: none;
-}
-
-.version {
-  position: absolute;
-  bottom: 0px;
-  right: 5px;
-  z-index: 100;
-  background-color: #141517;
-  animation: change-version 4s linear infinite;
-  color: #fff !important;
-  padding: 1px;
-  @include radius-gen(5px, 0px, 0px, 0px);
-  padding-left: 5px;
-  padding-top: 3px;
 }
 
 .close-right {

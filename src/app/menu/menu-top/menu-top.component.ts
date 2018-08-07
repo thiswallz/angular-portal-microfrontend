@@ -24,27 +24,22 @@ export class MenuTopComponent implements OnInit {
   readonly version: string = environment.version;
 
   constructor(private elem: ElementRef, private menuService: MenuService) {
+    const home = {
+      Name: 'Home',
+      Icon: 'fa-book',
+      Path: DEFAULT_MENU
+    };
+
     if (environment.auth === true) {
       this.menuService.getPermits().subscribe(auth => {
         this.userName = auth.User.Name;
         this.menues = [
-          {
-            Name: 'Home',
-            Icon: 'fa-book',
-            Path: DEFAULT_MENU
-          },
+          home,
           ...this.menuService.mergePermitsMenu(auth.Privileges, environment.sites.Children)
         ];
       });
     } else {
-      this.menues = [
-        {
-          Name: 'Home',
-          Icon: 'fa-book',
-          Path: DEFAULT_MENU
-        },
-        ...environment.sites.Children
-      ];
+      this.menues = [home, ...environment.sites.Children];
     }
   }
 

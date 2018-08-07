@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     this.router = new MetaRouter();
     this.router.config(states);
     this.router.init();
-    //router.preload();
   }
 
   generateStates(): MetaRoute[] {
@@ -46,7 +45,6 @@ export class AppComponent implements OnInit {
       } else {
         const children = menu.Children;
         children.map(child => {
-          // OPTIMIZE put some recursive f(x)
           const id = menu.Name.replace(/\s/g, '');
           const sid = child.Name.replace(/\s/g, '');
           states = [
