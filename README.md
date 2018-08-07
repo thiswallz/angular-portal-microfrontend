@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This Portal is using meta-spa-router for global routes and a dynamic-iframe strategy to load apps inside. You can include apps from different techonologies even if you are using routing there is not a problem this implementation.
 
-![Alt text](c1.png?raw=true 'Home')
+!(c1.PNG?raw=true 'Home')
 
-![Alt text](c2.png?raw=true 'Home')
+!(c2.PNG?raw=true 'Home')
 
 
 ### If you need to activate auth-option, the default structure for privileges is the following:
@@ -34,6 +34,8 @@ This Portal is using meta-spa-router for global routes and a dynamic-iframe stra
 - When you activate auth option the service has to response with privileges, the portal is going to merge the sites that you defined previusly with the privileges from the auth service.
 
 ### The portal uses a merge strategy for permits, you can change it in menu.service.ts
+
+#### It allows up to 2 nested levels deep. Menu>Sub Menu
 
 ```typescript
 ...
